@@ -1,7 +1,7 @@
 function Header() {
     return (
         <>
-            <h1>Impreso desde Header</h1>
+            <h1 className="">Impreso desde Header</h1>
         </>
     )
 }
