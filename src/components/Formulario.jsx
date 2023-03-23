@@ -8,13 +8,17 @@ const Formulario = () => {
   const [fecha, setFecha] = useState('');
   const [sintomas, setSintomas] = useState('');
 
+  const [error, setError] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log('Enviando formulario');
+    if( [mascota, propietario, email, fecha, sintomas].includes('') ){
+      setError(true)
+    }else {
+      setError(false)
+    }
   }
-
-  console.log(mascota);
 
   return (
     <div className="md:w-1/2 lg:w-2/5 mx-5">
@@ -33,6 +37,12 @@ const Formulario = () => {
           onSubmit={handleSubmit}
           className="bg-white shadow-md rounded-lg ml-10 py-10 px-5 mb-20"
         >
+          {
+            error && 
+            <div className="bg-red-700 text-white text-center p-3 uppercase font-bold rounded-md mb-5">
+              <p>Todos los campos son obligatorios</p>
+            </div>
+          }
           <div className="mb-5">
             <label htmlFor="mascota" className="block text-gray-700 uppercase font-bold">
               Nombre mascota
