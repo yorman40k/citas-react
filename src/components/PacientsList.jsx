@@ -1,6 +1,6 @@
 import Pacient from "./Pacient"
 
-function PacientsList() {
+function PacientsList({ pacientes }) {
   return (
     <div className="md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll">
         <h2 className="font-black text-3xl text-center">
@@ -13,14 +13,16 @@ function PacientsList() {
             Pacientes y Citas
           </span>
         </p>
-        
-          <Pacient/>
-          <Pacient/>
-          <Pacient/>
-          <Pacient/>
-          <Pacient/>
-          <Pacient/>
-          <Pacient/>
+
+        {
+          pacientes.map( paciente => (
+            <Pacient
+              key={paciente.id}
+              paciente={paciente}
+            />
+          ))
+        }
+          
     </div>
   )
 }

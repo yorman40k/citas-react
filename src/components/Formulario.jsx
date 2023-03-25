@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Error from './Error';
 
-const Formulario = ({ paciente, setPaciente }) => {
+const Formulario = ({ pacientes, setPacientes }) => {
 
   const [mascota, setMascota] = useState('');
   const [propietario, setPropietario] = useState('');
@@ -10,6 +10,14 @@ const Formulario = ({ paciente, setPaciente }) => {
   const [sintomas, setSintomas] = useState('');
 
   const [error, setError] = useState(false);
+
+  const generateId = () => {
+
+    const random = Math.random().toString(36).substr(2);
+    const date = Date.now().toString(36);
+
+    return random + date
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,10 +33,11 @@ const Formulario = ({ paciente, setPaciente }) => {
         propietario,
         email,
         fecha,
-        sintomas
+        sintomas,
+        id: generateId()
       }
 
-      setPaciente([...paciente, pacientObject]);
+      setPacientes([...pacientes, pacientObject]);
 
       setMascota('');
       setPropietario('');
