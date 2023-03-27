@@ -16,7 +16,8 @@ const Pacient = ({ paciente, setPaciente }) => {
             <span className="font-normal normal-case">{email}</span>
           </p>
 
-          <p className="font-bold mb-3 text-gray-700 uppercase">Fecha de  
+          <p className="font-bold mb-3 text-gray-700 uppercase">Fecha de alta
+            <span className="font-normal normal-case">{fecha}</span>
           </p>
 
           <p className="font-bold mb-3 text-gray-700 uppercase">Síntomas: {""}
