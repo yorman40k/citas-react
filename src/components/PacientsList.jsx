@@ -1,6 +1,7 @@
 import Pacient from "./Pacient"
 
-function PacientsList({ pacientes }) {
+function PacientsList({ pacientes, setPaciente }) {
+
   return (
     <div className="md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll">
 
@@ -22,6 +23,7 @@ function PacientsList({ pacientes }) {
               <Pacient
                 key={paciente.id}
                 paciente={paciente}
+                setPaciente={setPaciente}
               />
             ))
           }
