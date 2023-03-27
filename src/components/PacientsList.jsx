@@ -42,11 +42,9 @@ function PacientsList({ pacientes }) {
         </>        
       )
       
-      }
-        
-          
+      } 
     </div>
-  )
+  ) 
 }
 
 export default PacientsList
