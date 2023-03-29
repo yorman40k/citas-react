@@ -1,15 +1,15 @@
-const Pacient = ({ paciente, setPaciente }) => {
+const Pacient = ({ pacient, setPacient }) => {
 
-  const {mascota, propietario, email, fecha, sintomas} = paciente
+  const {pet, owner, email, date, sintoms} = pacient
 
   return (
     <div className="mx-5 my-8 bg-white shadow-md px-5 py-10 rounded-xl">
         <p className="font-bold mb-3 text-gray-700 uppercase">Nombre: {""}
-            <span className="font-normal normal-case">{mascota}</span>
+            <span className="font-normal normal-case">{pet}</span>
           </p>
 
           <p className="font-bold mb-3 text-gray-700 uppercase">Propietario: {""}
-            <span className="font-normal normal-case">{propietario}</span>
+            <span className="font-normal normal-case">{owner}</span>
           </p>
 
           <p className="font-bold mb-3 text-gray-700 uppercase">Email: {""}
@@ -17,11 +17,11 @@ const Pacient = ({ paciente, setPaciente }) => {
           </p>
 
           <p className="font-bold mb-3 text-gray-700 uppercase">Fecha de alta
-            <span className="font-normal normal-case">{fecha}</span>
+            <span className="font-normal normal-case">{date}</span>
           </p>
 
           <p className="font-bold mb-3 text-gray-700 uppercase">Síntomas: {""}
-            <span className="font-normal normal-case">{sintomas}</span>
+            <span className="font-normal normal-case">{sintoms}</span>
           </p>
 
           <div className="mt-5 flex justify-between">
@@ -30,7 +30,7 @@ const Pacient = ({ paciente, setPaciente }) => {
               type="button"
               className="py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold
               uppercase rounded-lg"
-              onClick={() => setPaciente(paciente)}
+              onClick={() => setPacient(pacient)}
             >
               Editar
             </button>

@@ -1,11 +1,11 @@
 import Pacient from "./Pacient"
 
-function PacientsList({ pacientes, setPaciente }) {
+function PacientsList({ pacients, setPacient }) {
 
   return (
     <div className="md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll">
 
-      {pacientes && pacientes.length ? (
+      {pacients && pacients.length ? (
         <>
           <h2 className="font-black text-3xl text-center">
             Listado de pacientes
@@ -19,11 +19,11 @@ function PacientsList({ pacientes, setPaciente }) {
           </p>
 
           {
-            pacientes.map( paciente => (
+            pacients.map( pacient => (
               <Pacient
-                key={paciente.id}
-                paciente={paciente}
-                setPaciente={setPaciente}
+                key={pacient.id}
+                pacient={pacient}
+                setPacient={setPacient}
               />
             ))
           }

@@ -1,25 +1,25 @@
 import { useState, useEffect } from 'react'
 import Error from './Error';
 
-const Formulario = ({ pacientes, setPacientes, paciente }) => {
+const Form = ({ pacients, setPacients, pacient }) => {
 
-  const [mascota, setMascota] = useState('');
-  const [propietario, setPropietario] = useState('');
+  const [pet, setPet] = useState('');
+  const [owner, setOwner] = useState('');
   const [email, setEmail] = useState('');
-  const [fecha, setFecha] = useState('');
-  const [sintomas, setSintomas] = useState('');
+  const [date, setDate] = useState('');
+  const [sintoms, setSintoms] = useState('');
 
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    if (Object.keys(paciente).length > 0) {
-      setMascota(paciente.mascota)
-      setPropietario(paciente.propietario)
-      setEmail(paciente.email)
-      setFecha(paciente.fecha)
-      setSintomas(paciente.sintomas)
+    if (Object.keys(pacient).length > 0) {
+      setPet(pacient.pet)
+      setOwner(pacient.owner)
+      setEmail(pacient.email)
+      setDate(pacient.date)
+      setSintoms(pacient.sintoms)
     }
-  }, [paciente])
+  }, [pacient])
   
 
   const generateId = () => {
@@ -33,28 +33,28 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if( [mascota, propietario, email, fecha, sintomas].includes('') ){
+    if( [pet, owner, email, date, sintoms].includes('') ){
       setError(true)
     }else{
       
       setError(false);
 
       const pacientObject = {
-        mascota,
-        propietario,
-        email,
-        fecha,
-        sintomas,
+        pet: pet,
+        owner: owner,
+        email: email,
+        date: date,
+        sintoms: sintoms,
         id: generateId()
       }
 
-      setPacientes([...pacientes, pacientObject]);
+      setPacients([...pacients, pacientObject]);
 
-      setMascota('');
-      setPropietario('');
+      setPet('');
+      setOwner('');
       setEmail('');
-      setFecha('');
-      setSintomas('');
+      setDate('');
+      setSintoms('');
     }
     
   }
@@ -83,7 +83,7 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
           }
           
           <div className="mb-5">
-            <label htmlFor="mascota" className="block text-gray-700 uppercase font-bold">
+            <label htmlFor="pet" className="block text-gray-700 uppercase font-bold">
               Nombre mascota
             </label>
 
@@ -92,13 +92,13 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
               type="text"
               placeholder="Nombre de la mascota"
               className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" 
-              value={mascota}
-              onChange={(e) => setMascota(e.target.value)}
+              value={pet}
+              onChange={(e) => setPet(e.target.value)}
             />
           </div>
 
           <div className="mb-5">
-            <label htmlFor="propietario" className="block text-gray-700 uppercase font-bold">
+            <label htmlFor="owner" className="block text-gray-700 uppercase font-bold">
               Nombre propietario
             </label>
 
@@ -107,8 +107,8 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
               type="text"
               placeholder="Nombre del propietario"
               className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" 
-              value={propietario}
-              onChange={(e) => setPropietario(e.target.value)}
+              value={owner}
+              onChange={(e) => setOwner(e.target.value)}
             />
           </div>
 
@@ -128,7 +128,7 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
           </div>
 
           <div className="mb-5">
-            <label htmlFor="alta" className="block text-gray-700 uppercase font-bold">
+            <label htmlFor="date" className="block text-gray-700 uppercase font-bold">
               Fecha de alta
             </label>
 
@@ -136,8 +136,8 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
               id="alta"
               type="date"
               className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" 
-              value={fecha}
-              onChange={(e) => setFecha(e.target.value)}
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
             />
           </div>
 
@@ -147,11 +147,11 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
             </label>
 
             <textarea 
-              id="sintomas" 
+              id="sintoms" 
               className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
               placeholder="Describe los síntomas"
-              value={sintomas}
-              onChange={(e) => setSintomas(e.target.value)}
+              value={sintoms}
+              onChange={(e) => setSintoms(e.target.value)}
             />
           </div>
 
@@ -166,4 +166,4 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
   )
 }
 
-export default Formulario
+export default Form
