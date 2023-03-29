@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Error from './Error';
 
-const Form = ({ pacients, setPacients, pacient }) => {
+const Form = ({ pacients, setPacients, pacient, setPacient }) => {
 
   const [pet, setPet] = useState('');
   const [owner, setOwner] = useState('');
@@ -44,11 +44,22 @@ const Form = ({ pacients, setPacients, pacient }) => {
         owner: owner,
         email: email,
         date: date,
-        sintoms: sintoms,
-        id: generateId()
+        sintoms: sintoms
       }
 
-      setPacients([...pacients, pacientObject]);
+      if (pacient.id) {
+        pacientObject.id = pacient.id;
+
+        const currentPacient = pacients.map( pacientState => 
+          pacientState.id === pacient.id ? pacientObject : pacientState  
+        )
+
+        setPacients(currentPacient);
+        setPacient({});
+      }else{
+        pacientObject.id = generateId();
+        setPacients([...pacients, pacientObject]);
+      }
 
       setPet('');
       setOwner('');
@@ -78,7 +89,7 @@ const Form = ({ pacients, setPacients, pacient }) => {
         >
           { error && 
             <Error>
-              <p>Todos los campos son obligaotrios</p>
+              <p>Todos los campos son obligatrios</p>
             </Error>
           }
           
@@ -159,7 +170,7 @@ const Form = ({ pacients, setPacients, pacient }) => {
             type="submit"
             className="bg-indigo-600 w-full p-3 mt-2 text-white uppercase font-bold rounded-md 
             hover:bg-indigo-800 cursor-pointer transition-colors"
-            value="Agregar paciente"
+            value={pacient.id ? "Editar paciente" : "Agregar paciente"}
           />
         </form>
     </div>
